@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+  <body>
+    <button onclick="openCamera()">Open Front Camera</button>
+    <video id="video" width="300" height="400" autoplay></video>
+    <script>
+      function openCamera() {
+        navigator.mediaDevices.getUserMedia({
+          video: { facingMode: "user" }
+        })
+        .then(function(stream) {
+          document.getElementById('video').srcObject = stream;
+        })
+        .catch(function(err) {
+          alert("Error: " + err);
+        });
+      }
+    </script>
+  </body>
+</html>
